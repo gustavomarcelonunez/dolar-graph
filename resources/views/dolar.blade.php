@@ -16,11 +16,9 @@
         <div class="cotizacion">
                 <p><strong>{{ $cotizacion['nombre'] }}</strong></p>
                 <ul>
-                    <li>Moneda: {{ $cotizacion['moneda'] }}</li>
-                    <li>Casa: {{ $cotizacion['casa'] }}</li>
                     <li>Compra: {{ $cotizacion['compra'] }}</li>
                     <li>Venta: {{ $cotizacion['venta'] }}</li>
-                    <li>Fecha de Actualización: {{ $cotizacion['fechaActualizacion'] }}</li>
+                    <li>Fecha de Actualización: {{ date('d/m/Y H:i:s', strtotime($cotizacion['fechaActualizacion'])) }}</li>
                 </ul>
             </div>
     @endforeach
