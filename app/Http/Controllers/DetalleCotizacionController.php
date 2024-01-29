@@ -35,8 +35,12 @@ class DetalleCotizacionController extends Controller
                 $client = new Client();
                 $response = $client->get($url);
                 $data = json_decode($response->getBody(), true);
-    
-                \Log::debug($data);
+                array_shift($data);
+                
+                if (in_array($nombre, ["Oficial", "Blue", "Banco Nación"])) {
+                    $data = array_reverse($data);
+                }
+
                 return view('detalle_cotizacion')->with('nombre', $nombre)->with('url', $url)->with('data', $data);
             } catch (RequestException $e) {
                 // Si hay un error de solicitud (por ejemplo, el servidor devuelve un código de error HTTP)
