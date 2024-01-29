@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DolarController;
+use App\Http\Controllers\DetalleCotizacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,7 @@ use App\Http\Controllers\DolarController;
 |
 */
 
-Route::get('/', [DolarController::class, 'obtenerCotizacion']);
+Route::get('/', [DolarController::class, 'obtenerCotizaciones']);
+Route::post('/detalle-cotizacion', [DetalleCotizacionController::class, 'detalleCotizacion'])->name('detalle.cotizacion');
+
+

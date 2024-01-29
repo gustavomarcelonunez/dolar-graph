@@ -13,14 +13,20 @@
     <h1>Cotizaciones del Dólar</h1>
 
     @foreach ($data as $cotizacion)
-        <div class="cotizacion">
-                <p><strong>{{ $cotizacion['nombre'] }}</strong></p>
-                <ul>
-                    <li>Compra: {{ $cotizacion['compra'] }}</li>
-                    <li>Venta: {{ $cotizacion['venta'] }}</li>
-                    <li>Fecha de Actualización: {{ date('d/m/Y H:i:s', strtotime($cotizacion['fechaActualizacion'])) }}</li>
-                </ul>
-            </div>
+    <div class="cotizacion">
+        <p><strong>{{ $cotizacion['nombre'] }}</strong></p>
+        <ul>
+            <li>Compra: {{ $cotizacion['compra'] }}</li>
+            <li>Venta: {{ $cotizacion['venta'] }}</li>
+            <li>Fecha de Actualización: {{ $cotizacion['fecha'] }}</li>
+            <li>Variación: {{ $cotizacion['variacion'] }}</li>
+        </ul>
+        <form action="{{ route('detalle.cotizacion') }}" method="POST">
+            @csrf
+            <input type="hidden" name="nombre" value="{{ $cotizacion['nombre'] }}">
+            <button type="submit">Ver Detalle</button>
+        </form>
+    </div>
     @endforeach
 
 </body>
